@@ -8,6 +8,13 @@ class BlogItem(scrapy.Item):
     description = scrapy.Field()
     photos = scrapy.Field()
 
+class BlogMetaItem(scrapy.Item):
+    url = scrapy.Field()
+    title = scrapy.Field()
+    description = scrapy.Field()
+    image = scrapy.Field()
+    published_on = scrapy.Field()
+
 class BlogSiteItem(scrapy.Item):
     author = scrapy.Field()
     site_url = scrapy.Field()
