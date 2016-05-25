@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import re
 
 from ..items import BlogMetaItem
 
@@ -42,4 +43,11 @@ class BlogSpider(scrapy.Spider):
     	elif len(time)>1:
     		time=time[0]
 
-        return BlogMetaItem(url=url,title=title,description=descp,image=img,published_on=time)
+    	stopwords_file = open("StopWord.txt", "r")
+    	STOPWORDS = stopwords_file.read().split(',')
+
+    	tags_title = [re.sub('[^a-zA-Z\']', '', word) for word in title.split() if re.sub('[^a-zA-Z\']', '', word).lower() not in STOPWORDS]
+    	tags_desc = [re.sub('[^a-zA-Z\']', '', word) for word in descp.split() if re.sub('[^a-zA-Z\']', '', word).lower() not in STOPWORDS]
+    	tags = tags_title+tags_desc
+
+        return BlogMetaItem(url=url,title=title,description=descp,image=img,published_on=time,tags=tags)

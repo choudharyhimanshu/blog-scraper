@@ -14,6 +14,7 @@ class BlogMetaItem(scrapy.Item):
     description = scrapy.Field()
     image = scrapy.Field()
     published_on = scrapy.Field()
+    tags = scrapy.Field()
 
 class BlogSiteItem(scrapy.Item):
     author = scrapy.Field()
