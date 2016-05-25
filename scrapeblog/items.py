@@ -21,10 +21,3 @@ class BlogSiteItem(scrapy.Item):
     site_url = scrapy.Field()
     blogs_title = scrapy.Field()
     blogs_link = scrapy.Field()
-
-class TwitterProfileItem(scrapy.Item):
-    username = scrapy.Field()
-    fullname = scrapy.Field()
-    website = scrapy.Field()
-    location = scrapy.Field()
-    photo = scrapy.Field()
