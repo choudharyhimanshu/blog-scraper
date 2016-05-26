@@ -18,12 +18,21 @@ class BlogSpider(scrapy.Spider):
 
     	if not title:
     		title = response.xpath('//title/text()').extract()
-    	elif len(title)>1:
+    		if type(title) is list:
+    			if len(title)>0:
+    				title = title[0]
+    			else:
+    				title = None 
+    	elif len(title)>0:
     		title = title[0]
 
     	if not descp:
-    		pass
-    	elif len(descp)>1:
+    		paragraphs = response.xpath('//p/text()').extract()
+    		for i in range(len(paragraphs)):
+    			if(len(paragraphs[i])>50):
+    				descp = paragraphs[i]
+    				break
+    	elif len(descp)>0:
     		max_descp = ''
     		for val in descp:
     			if(len(max_descp)<len(val)):
@@ -31,8 +40,14 @@ class BlogSpider(scrapy.Spider):
     		descp = max_descp
 
     	if not img:
-    		pass
-    	elif len(img)>1:
+    		photos = response.xpath('//img/@src').extract()
+    		for val in photos:
+    			if '.jpg' in val:
+    				img = val
+    				break
+    		else:
+    			img = None
+    	elif len(img)>0:
     		for val in img:
     			if 'http' in val or 'https' in val:
     				img = val
@@ -40,7 +55,7 @@ class BlogSpider(scrapy.Spider):
 
     	if not time:
     		pass
-    	elif len(time)>1:
+    	elif len(time)>0:
     		time=time[0]
 
     	stopwords_file = open("StopWord.txt", "r")
