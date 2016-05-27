@@ -1,3 +1,4 @@
+dbs
 logs
 scrapeblog/*.pyc
 scrapeblog/spiders/*.pyc
