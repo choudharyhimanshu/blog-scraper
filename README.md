@@ -1,4 +1,3 @@
-
 ### What is this repository for? ###
 
 To scrape useful data from a blogger's website (mainly focused on travel blogs). It has several types of spiders and each spider scrapes different type of webpage.
@@ -45,6 +44,16 @@ Sample Request : http://localhost:9080/crawl.json?spider_name=blog&url=http://bu
 3). **twitterprofile** : To get user's website url and other useful public data from twitter profile.
 
 Sample Request : http://localhost:9080/crawl.json?spider_name=twitterprofile&url=https://twitter.com/5foottraveler
+
+### DEMO ###
+
+Spider : blogsite
+
+http://blog-scraper-api.herokuapp.com/crawl.json?spider_name=blogsite&url=http://bucketlistjourney.net
+
+Spider : blogmeta
+
+http://blog-scraper-api.herokuapp.com/crawl.json?spider_name=blogmeta&url=http://bucketlistjourney.net/2016/05/things-not-to-do-when-writing-a-book/
 
 
 ### Who do I talk to? ###
